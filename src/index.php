@@ -1,4 +1,65 @@
-<!DOCTYPE html>
+<?php
+
+    $medlemmer[] = array(
+            "navn"=>"Johannes",
+            "bilde"=>"//media.discordapp.net/attachments/885832319825485845/892078569667297311/johannes.jpg",
+            "beskrivelse"=>"20 år fra ingenmannsland (Hovsherad) og bor i Kvadraturen med samboeren min.
+                            På VGS ble jeg introdusert til web programmering og databaser. 
+                            Etter det søkte jeg på IT og informasjonssystemer som jeg nå til våren 2021 skal skrive bachelor oppgave i. 
+                            Gjennom studiet har vi vært gjennom alle mulige felt av IT, men har endt opp med å ha sansen
+                            for backend utvikling.
+                            Jeg syntes at det er fascinerende å se hvordan data flyter gjennom flere lag med logikk, 
+                            og hvordan man kan sette individuelle komponenter sammen slik det blir et system. 
+                            Ved siden av studiene så jobber jeg som sikkerhetsanalytiker og hjelpelærer, og på fritiden liker jeg å tegne, 
+                            gå tur i naturen, diskutere/spille musikk og kode."
+    );
+
+    $medlemmer[] = array(
+            "navn"=>"Tor Inge",
+            "bilde"=>"images/tor_inge_crop.png",
+            "beskrivelse"=>"Jeg heter Tor Inge, er 22 år gammel, kommer fra Gjerstad og bor på Vegårshei. På fritiden liker å 
+                        spille gitar, trommer og piano, og være med kjæreste og hund. Etter studiespesialisering jobbet jeg 
+                        et år før jeg begynte å innse min interesse for IT. Jeg går nå siste året på bacheloren 
+                        IT og Informasjonssystemer ved UiA og er glad jeg bestemte meg for å søke på IT linja. 
+                        Et stykke inn i femte semester sitter jeg igjen med varierte og gode kunnskaper innen 
+                        flere områder, men kanskje mest kunnskap og interesse har jeg for systemutvikling gjennom 
+                        tjenestedesign."
+    );
+
+    $medlemmer[] = array(
+            "navn"=>"Anders",
+            "bilde"=>"images/anders.jpg",
+            "beskrivelse"=>""
+    );
+
+    $medlemmer[] = array(
+            "navn"=>"Thomas",
+            "bilde"=>"images/thomas_crop.png",
+            "beskrivelse"=>""
+    );
+
+    $medlemmer[] = array(
+            "navn"=>"Bendix",
+            "bilde"=>"//media.discordapp.net/attachments/885832319825485845/891766144531333141/bendix.jpg",
+            "beskrivelse"=>""
+    );
+
+    $medlemmer[] = array(
+            "navn"=>"Eirik",
+            "bilde"=>"//useg.it/avatars/18ff2381c713b89a7237786972b86ce7",
+            "beskrivelse"=>""
+    );
+    $medlemmer[] = array(
+            "navn"=>"Espen",
+            "bilde"=>"images/espen_crop.PNG",
+            "beskrivelse"=>"Jeg heter Espen, er 26 år gammel, kommer fra Vennesla og bor i Kristiansand. Etter studiespesialisering gikk jeg på bibelskole, 
+                            elektro og deretter bestemte jeg meg for å gå all in for IT.  Nå er jeg på siste året på Bacheloren ved UiA. 
+                            Nå i semester fem har jeg praksis hos KnowIT, hvor jeg jobber med frontend (React med typescript), men jeg trives godt med backend og database.
+                            På fritiden er jeg glad i å bruke tid ute, game litt, og besøke familien hjemme i Vennesla. Da får jeg også møtt hunden min, som ikke er tillatt
+                            i leiligheten her jeg nå bor."
+    );
+
+?><!DOCTYPE html>
 <html lang="en">
     <head>
         <title>ASCII - Portal</title>
@@ -38,7 +99,7 @@
         <section id="nav-bar">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="index.html">ASCII</a>
+                    <a class="navbar-brand" href="index.php">ASCII</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -51,7 +112,7 @@
                                 <a class="nav-link" href="#medlemmer">Medlemmer</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#fokus">Mål og Fokus</a>
+                                <a class="nav-link" href="#mål">Mål og Fokus</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#kontakt">Kontakt oss</a>
@@ -94,7 +155,7 @@
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <div id="slide-2" src="...">
+                                    <div id="slide-2">
                                         <p class="slide-title">Interesser</p>
                                         <p class="slide-text">
                                             Vår gruppe brenner for å kunne bruke våre kunnskaper og erfaringer på reelle 
@@ -105,7 +166,7 @@
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <div id="slide-3" src="...">
+                                    <div id="slide-3">
                                         <p class="slide-title">Ønsker</p>
                                         <p class="slide-text">
                                             Våre ønsker er å danne et godt samarbeid med en bedriftspartner og sammen jobbe
@@ -137,19 +198,66 @@
                     <h1 id="info-title">Medlemmer</h1>
                     <h1 id="info-text"><span>Klikk på et medlem for å bli bedre kjent</span></h1>
                 </div>
-                <div class="row rad">
-                    <div class="col-md-2 members">
-                        <a href="johannes.html">
-                            <div class="member-box" id="member-1">
-                                <img class="img-fluid" src="//media.discordapp.net/attachments/885832319825485845/892078569667297311/johannes.jpg">
-                                <h1 class="member-title">Johannes</h1>
+
+                <div class="row" id="medlemInfo">
+                    <div class="col">
+                        <div class="row rad">
+
+                    <?php
+                    foreach ($medlemmer as $k => $m){
+                    ?>
+                            <div class="col members">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#brukerBeskrivelse<?=$k;?>" role="button" aria-expanded="false" aria-controls="brukerBeskrivelse<?=$k;?>">
+                                    <div class="card" style="width: 14rem;">
+
+                                        <img class="img-fluid" src="<?=$m['bilde'];?>" alt="<?=$m['navn'];?>">
+                                        <h5 class="card-title"><?=$m['navn'];?></h5>
+
+                                    </div>
+                                </a>
+
                             </div>
-                        </a>
+
+                    <?php } ?>
+                        </div>
                     </div>
+
+<!--                <div class="">-->
+                    <?php
+                    foreach ($medlemmer as $k => $m){
+                    ?>
+
+                    <div class="col collapse multi-collapse" id="brukerBeskrivelse<?=$k;?>" data-bs-parent="#medlemInfo">
+                            <div class="card text-white bg-success">
+
+                                <?php /*<h3 class="card-title"><?=$m['navn'];?></h3>
+                                <div class="card-body">
+                                    <?=$m['beskrivelse'];?>
+                                </div> */ ?>
+
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="<?=$m['bilde'];?>" class="img-fluid rounded-start" alt="<?=$m['navn'];?>">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?=$m['navn'];?></h5>
+                                            <p class="card-text"><?=$m['beskrivelse'];?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <?php } ?>
+                </div>
+
+
+                    <!--
                     <div class="col-md-2 members">
                         <a href="toringe.html">
                         <div class="member-box" id="member-2">
-                            <img class="img-fluid" src="./images/tor_inge_crop.png">
+                            <img class="img-fluid" src="./images/tor_inge_crop.png" alt="Tor Inge">
                             <h1 class="member-title">Tor Inge</h1>
                         </div>
                         </a>
@@ -157,7 +265,7 @@
                     <div class="col-md-2 members">
                         <a href="anders.html">
                         <div class="member-box" id="member-3">
-                            <img class="img-fluid" src="images/anders.jpg">
+                            <img class="img-fluid" src="images/anders.jpg" alt="Anders">
                             <h1 class="member-title">Anders</h1>
                         </div>
                         </a>
@@ -167,7 +275,7 @@
                     <div class="col-md-2 members">
                         <a href="thomas.html">
                         <div class="member-box" id="member-4">
-                            <img class="img-fluid" src="images/thomas_crop.png">
+                            <img class="img-fluid" src="images/thomas_crop.png" alt="Thomas">
                             <h1 class="member-title">Thomas</h1>
                         </div>
                         </a>
@@ -175,7 +283,7 @@
                     <div class="col-md-2 members">
                         <a href="bendix.html">
                         <div class="member-box" id="member-5">
-                            <img class="img-fluid" src="//media.discordapp.net/attachments/885832319825485845/891766144531333141/bendix.jpg">
+                            <img class="img-fluid" src="//media.discordapp.net/attachments/885832319825485845/891766144531333141/bendix.jpg" alt="Bendix">
                             <h1 class="member-title">Bendix</h1>
                         </div>
                         </a>
@@ -183,7 +291,7 @@
                     <div class="col-md-2 members">
                         <a href="eirik.html">
                         <div class="member-box" id="member-6">
-                            <img class="img-fluid" src="//useg.it/avatars/18ff2381c713b89a7237786972b86ce7">
+                            <img class="img-fluid" src="//useg.it/avatars/18ff2381c713b89a7237786972b86ce7" alt="Eirik">
                             <h1 class="member-title">Eirik</h1>
                         </div>
                         </a>
@@ -191,13 +299,14 @@
                     <div class="col-md-2 members">
                         <a href="espen.html">
                         <div class="member-box" id="member-7">
-                            <img class="img-fluid" src="images/espen_crop.PNG">
+                            <img class="img-fluid" src="images/espen_crop.PNG" alt="Espen">
                             <h1 class="member-title">Espen</h1>
                         </div>
                         </a>
                     </div>
-                </div>
+                </div>-->
             </div>
+
         </section>
 
         <section id="mål">

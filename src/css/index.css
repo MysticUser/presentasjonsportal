@@ -234,3 +234,18 @@ body {
     font-size: 20px;
     padding-top: 31px;
 }
+
+a .card {
+    transition: 0.5s all;
+}
+
+a:not(.collapsed) .card {
+
+    /* .text-white */
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-white-rgb),var(--bs-text-opacity)) !important;
+
+    /* .bg-success */
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-primary-rgb),var(--bs-bg-opacity)) !important;
+}
